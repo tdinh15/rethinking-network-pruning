@@ -25,7 +25,7 @@ parser.add_argument('--batch-size', type=int, default=64, metavar='N',
                     help='input batch size for training (default: 64)')
 parser.add_argument('--test-batch-size', type=int, default=256, metavar='N',
                     help='input batch size for testing (default: 256)')
-parser.add_argument('--epochs', type=int, default=160, metavar='N',
+parser.add_argument('--epochs', type=int, default=200, metavar='N',
                     help='number of epochs to train (default: 160)')
 parser.add_argument('--start-epoch', default=0, type=int, metavar='N',
                     help='manual epoch number (useful on restarts)')
@@ -177,7 +177,7 @@ def save_checkpoint(state, is_best, filepath):
 
 best_prec1 = 0.
 for epoch in range(args.start_epoch, args.epochs):
-    if epoch in [args.epochs*0.5, args.epochs*0.75]:
+    if epoch in [args.epochs*0.5, args.epochs*0.8]:
         for param_group in optimizer.param_groups:
             param_group['lr'] *= 0.1
     train(epoch)
